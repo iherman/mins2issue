@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>2 mins converter</title>
+<meta charset="utf-8" />
+<style>
+h2 { margin-top: 2em; font-weight:300; color:#900; border-top: 1px solid #ccc; text-align: end; margin-left: 5%; margin-right: 2%;  }
+.tagtitle { font-weight:bold; color:#900; font-size: 110%; margin-bottom: 0; margin-left: 5%; }
+.tagbody { margin-top: 0; margin-bottom: 0; margin-left: 5%; }
+.tagbody::after {
+	content: ' ' attr(title);
+	font-size: 12px;
+	margin-left: 10px;
+	float: right;
+	margin-right: 2em;
+	}
+a { color: #ccc; text-decoration: none; font-wieght: 300; font-size: 80%; }
+#highlightToggle { border: 0; border-radius: 8px; margin-right: 3em; }
+body { color: #aaa;  font-family: "helvetica neue", sans-serif; font-weight: 300; }
+b { font-weight:bold; color:#900; font-size: 120%; }
+i { font-weight:bold; color:#900; font-size: 90%; }
+strong { color: orange; color: #900; font-weight: normal; font-size: 100%;  }
+.demihighlight { color: #333; font-weight: normal; font-size: 90%;  }
+.highlight { color: orange; color: #900; font-weight: normal; font-size: 100%;  }
+.topic { color: rgba(1,192,248,1.00); font-weight: normal; font-size: 100%;  }
+.standard { font-size: 90%; }
+cite { color: rgba(1,192,248,1.00); font-size: 90%; }
+em { color: #B66B37; font-weight: normal; font-style: italic;  }
+h1 { margin-top: 3em; }
+p:hover { background-color: #eee; }
+
+#flexContainer {  }
+#displayArea { width: 50%; }
+#text { position: fixed; right: 0; top: 1em; width: 50%; text-align: right; }
+#instructions { width: 50%; }
+#input { width: 90%; border: 0; height: 93vh; margin-top: 5vh; }
+input[type=button] { cursor: pointer; }
+</style>
+<script>
+
+
+function generate (input) {
+	input = input.replace(/&/, '&amp;')
+	input = input.replace(/</, '&lt;')
+	var inputlines = input.split("\n")
+	var out = []
+    var actions = []
+    var resolutions = []
+
+	// go through input and concatenate lines so you have one line per entry with fields tab separated
+	for (let i=0; i<inputlines.length; i++) { 
+        inputlines[i] = inputlines[i].trim()
+		inputlines[i] = inputlines[i].replace(/^<([^>]+)>/g, '<b>&lt;$1&gt;</b>')
+		inputlines[i] = inputlines[i].replace(/^([^: ]+):/g, '<b>$1:</b>')
+		inputlines[i] = inputlines[i].replace(/<b>https:<\/b>/g, 'https:')
+		inputlines[i] = inputlines[i].replace(/<b>http:<\/b>/g, 'http:')
+		inputlines[i] = inputlines[i].replace(/https:([^ ]+)/g, '<a href="https:$1">https:$1</a>')
+		inputlines[i] = inputlines[i].replace(/http:([^ ]+)/g, '<a href="http:$1">http:$1</a>')
+        if (inputlines[i] !== '') {
+            out.push(inputlines[i] + '<br/>\n')
+            }
+        // check for actions
+        if (inputlines[i].includes('Created ACTION-')) actions.push(inputlines[i].substr(inputlines[i].indexOf(' - ')+3))
+        if (inputlines[i].includes('RESOLVED:</b>')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+13))
+        else if (inputlines[i].includes('RESOLVED:')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+9))
+        }
+    var result = 'This issue was discussed in '
+    if (document.getElementById('url').value) result += '[a meeting]('+document.getElementById('url').value+')'
+    else result += 'a meeting'
+    result += '.\n\n'
+    
+    
+    if (actions.length===0 && resolutions.length===0) result += '- No actions or resolutions\n'
+    else {
+        // list actions
+        if (actions.length>0) {
+            for (let i=0;i<actions.length;i++) result += '- `ACTION: ' + actions[i] + '`\n'
+            }
+        // list resolutions
+        if (resolutions.length>0) {
+            for (let i=0;i<resolutions.length;i++) result += '- `RESOLVED: ' + resolutions[i] + '`\n'
+            }
+        }
+    
+    
+    result += '<details><summary>View the transcript</summary>\n'
+    result += out.join('')
+    result += '</details>'
+    
+    return result
+}
+
+
+	
+</script>
+</head>
+<body>
+<h1>Convert minutes to github issue reports</h1>
+
+
+<p>URL of meeting minutes: <input id="url" type="text" style="width: 50%;"/></p>
+<div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
+<textarea id="in" style="flex: 1; height: 50vh;" placeholder="Copy/paste a section of the minutes here."></textarea>
+<textarea id="out" style="flex: 1; height: 50vh;" placeholder="Copy the result from here into a github issue."></textarea>
+
+</div>
+
+
+
+
+<div id="controlPanel" style="background-color: white; width: 100%; height:2em;  ">
+
+<button onclick="document.getElementById('out').value = generate(document.getElementById('in').value);document.getElementById('out').select()">Generate</button>
+
+<input type="button" onclick="document.getElementById('in').value = ''; " value="Clear all data" />
+
+</div>
+
+
+
+
+
+<div id="instructions" style="font-size: 90%; margin-top: 7em;">
+<h2 style="text-align:start; margin-left: 0;">How to create inserts for issues</h2>
+<p>Copy a section of the meeting minutes to the right hand panel.</p>
+<p>Click on 'Generate from text area'</p>
+<p>Click on 'Highlight result' and copy paste into your github issue.</p>
+</div>
+</body>
+</html>
