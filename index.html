@@ -94,13 +94,13 @@ function generate (input) {
     
     if (actions.length===0 && resolutions.length===0) result += '- No actions or resolutions\n'
     else {
-        // list actions
-        if (actions.length>0) {
-            for (let i=0;i<actions.length;i++) result += '- `ACTION: ' + actions[i] + '`\n'
-            }
         // list resolutions
         if (resolutions.length>0) {
             for (let i=0;i<resolutions.length;i++) result += '- `RESOLVED: ' + resolutions[i] + '`\n'
+            }
+        // list actions
+        if (actions.length>0) {
+            for (let i=0;i<actions.length;i++) result += '- `ACTION: ' + actions[i] + '`\n'
             }
         }
     
