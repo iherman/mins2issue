@@ -49,7 +49,7 @@ fantasai: tab followed up, there was no response for a year
 
 will be converted to:
 
-This issue was discussed in a meeting.
+This issue was discussed in [a meeting](https://lists.w3.org/Archives/Public/www-style/2017Feb/0049.html).
 
 - `RESOLVED:  We reject issue 14 but will follow up.`
 - `ACTION: contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].`
