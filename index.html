@@ -14,7 +14,7 @@ h2 { margin-top: 2em; font-weight:300; color:#900; border-top: 1px solid #ccc; t
 	float: right;
 	margin-right: 2em;
 	}
-a { color: #ccc; text-decoration: none; font-wieght: 300; font-size: 80%; }
+a { color: #ccc; text-decoration: none; font-wieght: 300; }
 #highlightToggle { border: 0; border-radius: 8px; margin-right: 3em; }
 body { color: #aaa;  font-family: "helvetica neue", sans-serif; font-weight: 300; }
 b { font-weight:bold; color:#900; font-size: 120%; }
@@ -26,7 +26,7 @@ strong { color: orange; color: #900; font-weight: normal; font-size: 100%;  }
 .standard { font-size: 90%; }
 cite { color: rgba(1,192,248,1.00); font-size: 90%; }
 em { color: #B66B37; font-weight: normal; font-style: italic;  }
-h1 { margin-top: 3em; }
+h1 { margin-top: 1em; }
 p:hover { background-color: #eee; }
 
 #flexContainer {  }
@@ -35,6 +35,28 @@ p:hover { background-color: #eee; }
 #instructions { width: 50%; }
 #input { width: 90%; border: 0; height: 93vh; margin-top: 5vh; }
 input[type=button] { cursor: pointer; }
+
+.smallprint {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #999;
+    margin: 0;
+        margin-top: 0px;
+    margin-top: 7em;
+    text-align: right;
+    clear: both;
+    position: fixed;
+    right: 0;
+    bottom: 10px;
+    }
+span#version {
+    padding: 8px 20px;
+    background-color: #f5f5f5;
+    }
+#version :link, #version :visited {
+    color: teal;
+    text-decoration: none;
+    }
 </style>
 <script>
 
@@ -95,24 +117,23 @@ function generate (input) {
 </script>
 </head>
 <body>
-<h1>Convert minutes to github issue reports</h1>
+<h1>Convert minutes to github issue comments</h1>
 
 
 <p>URL of meeting minutes: <input id="url" type="text" style="width: 50%;"/></p>
 <div style="display: flex; flex-direction: row; flex-wrap: nowrap;">
-<textarea id="in" style="flex: 1; height: 50vh;" placeholder="Copy/paste a section of the minutes here."></textarea>
-<textarea id="out" style="flex: 1; height: 50vh;" placeholder="Copy the result from here into a github issue."></textarea>
+<textarea id="in" style="flex: 1; height: 60vh;" placeholder="Copy/paste a section of the minutes here."></textarea>
+<textarea id="out" style="flex: 1; height: 60vh;" placeholder="Copy the result from here into a github issue."></textarea>
 
 </div>
 
 
 
 
-<div id="controlPanel" style="background-color: white; width: 100%; height:2em;  ">
+<div id="controlPanel" style="background-color: white; width: 100%; height:2em; margin-top: .5em;">
+<button style="font-size: 100%" onclick="document.getElementById('out').value = generate(document.getElementById('in').value);document.getElementById('out').select()">Generate issue comment</button>
 
-<button onclick="document.getElementById('out').value = generate(document.getElementById('in').value);document.getElementById('out').select()">Generate</button>
-
-<input type="button" onclick="document.getElementById('in').value = ''; " value="Clear all data" />
+<input type="button" onclick="document.getElementById('in').value = ''; " value="Clear input box" />
 
 </div>
 
@@ -120,11 +141,16 @@ function generate (input) {
 
 
 
-<div id="instructions" style="font-size: 90%; margin-top: 7em;">
-<h2 style="text-align:start; margin-left: 0;">How to create inserts for issues</h2>
-<p>Copy a section of the meeting minutes to the right hand panel.</p>
-<p>Click on 'Generate from text area'</p>
-<p>Click on 'Highlight result' and copy paste into your github issue.</p>
+<div id="instructions" style="font-size: 90%; margin-top: 1em;">
+<p><a href="https://github.com/r12a/mins2issue/blob/gh-pages/README.md">&nbsp; How to use this</a></p>
+</div>
+
+
+<div class="smallprint"><span id="version">
+See <a href="https://github.com/r12a/mins2issue/commits/gh-pages">recent changes</a>.
+Make a <a href="https://github.com/r12a/mins2issue/issues">comment</a>. 
+Licence <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC-By</a> © <a href="mailto:r12a@w3.org">r12a</a> 
+</span>
 </div>
 </body>
 </html>
