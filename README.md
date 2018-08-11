@@ -23,78 +23,53 @@ I haven't yet tried the tool with v2 of the W3C minutes generator.
 
 The following:
 ```
-<fantasai> https://drafts.csswg.org/css-text-3/issues-lc-2013#issue-172
+fantasai: Two issues are rejected
+fantasai: #14
+<fantasai> https://drafts.csswg.org/css-text-decor-3/issues-cr-2013#issue-14
+fantasai: A request to forbid text emphasis from having only a color.
+fantasai: We already allow this for border, etc.
+astearns: Have they responded to rejection?
+fantasai: I think he's ok with it but haven't found email.
 
-github: https://github.com/w3c/csswg-drafts/issues/2233
+tantek: I'm missing why we should do this.
+... Border color is right answer, we already have this pattern.
 
-fantasai: We asked for i118n feedback. Wanted to check with WG as well. You have some text and at the end of the line you have whitepsace and mixed in there are bidi control characters. Does the whitespace collapse?
+RESOLVED: We reject issue 14 but will follow up.
 
-florian: If instead of bidi control characters you have markup with the eq. bidi commands we collapse through.
+fantasai: tab followed up, there was no response for a year
+<tantek> tab's message URL?
+<fantasai> https://lists.w3.org/Archives/Public/www-style/2015Nov/0355.html
+<tantek> (was not linked from Xidorn's message)
+<fantasai> because our archive software is terrible
+<tantek> agreed resolve per Tab's response / explanation
 
-myles: Reason to not collapse is if there's a character user can see. This is not that. It should collapse.
-
-florian: Spec says that but I don't believe anyone does that.
-
-florian: CSS2 and CSS Text 3 says it must collapse.
-
-fantasai: Keep spec as is and file bugs?
-
-myles: THis is a thing we should do.
-
-koji: WE make bidi controls follow collapsing.
-
-astearns: Text 3 is where in process?
-
-fantasai: LC
-
-astearns: It'll have to be at risk if we still don't have impl.
-
-fantasai: I'm happy for at risk.
-
-<eae> (to clarify, in our new layout engine we do collapse through bidi control characters. the current layout engine does not)
-
-fantasai: Mark it as at risk and if no one impl we say we want to do it this way.
-
-astearns: Close no change?
-
-florian: Mark at risk?
-
-RESOLVED: Keep but mark at risk
-
-fremy: Edge does this
-
-fantasai: koji says Chrome will.
-
-RESOLVED: Just keep, don't mark at risk.
+<scribe> ACTION: Fantasai to contact Xidorn about issue #14
+<trackbot> Created ACTION-14 - contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].
 ```
 
 will be converted to:
 
-This issue was discussed in [a meeting](https://github.com/r12a/mins2issue/edit/gh-pages/README.md).
+This issue was discussed in a meeting.
 
-- `RESOLVED:  Keep but mark at risk`
-- `RESOLVED:  Just keep, don't mark at risk.`
+- `RESOLVED:  We reject issue 14 but will follow up.`
+- `ACTION: contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].`
 <details><summary>View the transcript</summary>
-&lt;fantasai> <a href="https://drafts.csswg.org/css-text-3/issues-lc-2013#issue-172">https://drafts.csswg.org/css-text-3/issues-lc-2013#issue-172</a><br/>
-<b>github:</b> <a href="https://github.com/w3c/csswg-drafts/issues/2233">https://github.com/w3c/csswg-drafts/issues/2233</a><br/>
-<b>fantasai:</b> We asked for i118n feedback. Wanted to check with WG as well. You have some text and at the end of the line you have whitepsace and mixed in there are bidi control characters. Does the whitespace collapse?<br/>
-<b>florian:</b> If instead of bidi control characters you have markup with the eq. bidi commands we collapse through.<br/>
-<b>myles:</b> Reason to not collapse is if there's a character user can see. This is not that. It should collapse.<br/>
-<b>florian:</b> Spec says that but I don't believe anyone does that.<br/>
-<b>florian:</b> CSS2 and CSS Text 3 says it must collapse.<br/>
-<b>fantasai:</b> Keep spec as is and file bugs?<br/>
-<b>myles:</b> THis is a thing we should do.<br/>
-<b>koji:</b> WE make bidi controls follow collapsing.<br/>
-<b>astearns:</b> Text 3 is where in process?<br/>
-<b>fantasai:</b> LC<br/>
-<b>astearns:</b> It'll have to be at risk if we still don't have impl.<br/>
-<b>fantasai:</b> I'm happy for at risk.<br/>
-<b>&lt;eae&gt;</b> (to clarify, in our new layout engine we do collapse through bidi control characters. the current layout engine does not)<br/>
-<b>fantasai:</b> Mark it as at risk and if no one impl we say we want to do it this way.<br/>
-<b>astearns:</b> Close no change?<br/>
-<b>florian:</b> Mark at risk?<br/>
-<b>RESOLVED:</b> Keep but mark at risk<br/>
-<b>fremy:</b> Edge does this<br/>
-<b>fantasai:</b> koji says Chrome will.<br/>
-<b>RESOLVED:</b> Just keep, don't mark at risk.<br/>
+<b>fantasai:</b> Two issues are rejected<br/>
+<b>fantasai:</b> #14<br/>
+&lt;fantasai> <a href="https://drafts.csswg.org/css-text-decor-3/issues-cr-2013#issue-14">https://drafts.csswg.org/css-text-decor-3/issues-cr-2013#issue-14</a><br/>
+<b>fantasai:</b> A request to forbid text emphasis from having only a color.<br/>
+<b>fantasai:</b> We already allow this for border, etc.<br/>
+<b>astearns:</b> Have they responded to rejection?<br/>
+<b>fantasai:</b> I think he's ok with it but haven't found email.<br/>
+<b>tantek:</b> I'm missing why we should do this.<br/>
+... Border color is right answer, we already have this pattern.<br/>
+<b>RESOLVED:</b> We reject issue 14 but will follow up.<br/>
+<b>fantasai:</b> tab followed up, there was no response for a year<br/>
+<b>&lt;tantek&gt;</b> tab's message URL?<br/>
+<b>&lt;fantasai&gt;</b> <a href="https://lists.w3.org/Archives/Public/www-style/2015Nov/0355.html">https://lists.w3.org/Archives/Public/www-style/2015Nov/0355.html</a><br/>
+<b>&lt;tantek&gt;</b> (was not linked from Xidorn's message)<br/>
+<b>&lt;fantasai&gt;</b> because our archive software is terrible<br/>
+<b>&lt;tantek&gt;</b> agreed resolve per Tab's response / explanation<br/>
+<b>&lt;scribe&gt;</b> ACTION: Fantasai to contact Xidorn about issue #14<br/>
+<b>&lt;trackbot&gt;</b> Created ACTION-14 - contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].<br/>
 </details>
