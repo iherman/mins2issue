@@ -3,25 +3,24 @@ Simple web based tool to convert parts of W3C minutes output into a form that ca
 
 ## To use the tool:
 
-Go to https://r12a.github.io/mins2issue/
+1. Go to https://r12a.github.io/mins2issue/
 
-Paste the URL of the minutes page into the box with the label `URL of meeting minutes`.
+2. [optional] Paste the URL of the minutes page into the box with the label `URL of meeting minutes`.
 
-Select the lines you want in the page of minutes, and copy/paste them into the large box on the left.
+3. Select the lines you want from the page of minutes, and copy/paste them into the large box on the left.
 
-Click on `Generate`.
+4. Click on `Generate issue comment`.
 
-Copy the highlighted result in the right-hand box, and paste it into a `Write` box in a GitHub issue.
+5. Copy the highlighted result from the right-hand box, and paste it into a comment box in a GitHub issue.
 
 The tool should place near the top a list of actions raised, and any resolutions taken.
 
-Resolutions should be signalled in the minutes by the text `RESOLVED: ` followed by what was resolved. The actions are picked up from the standard Zakim output.
+Seems to work with minutes pages produced by rrsagent (including v2) and scribejs.
 
-I haven't yet tried the tool with v2 of the W3C minutes generator.
 
 ## Example
 
-The following:
+### The following extract from a minutes page:
 ```
 fantasai: Two issues are rejected
 fantasai: #14
@@ -47,13 +46,14 @@ fantasai: tab followed up, there was no response for a year
 <trackbot> Created ACTION-14 - contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].
 ```
 
-will be converted to:
+### will be converted to text that will look like this when dropped into an issue comment field:
+
 
 This issue was discussed in [a meeting](https://lists.w3.org/Archives/Public/www-style/2017Feb/0049.html).
 
 - `RESOLVED:  We reject issue 14 but will follow up.`
 - `ACTION: contact Xidorn about issue #14 [on Fantasai - due 2017-08-17].`
-<details><summary>View the transcript</summary>
+<details><summary><i class="differentiate">View the transcript</i></summary>
 <b>fantasai:</b> Two issues are rejected<br/>
 <b>fantasai:</b> #14<br/>
 &lt;fantasai> <a href="https://drafts.csswg.org/css-text-decor-3/issues-cr-2013#issue-14">https://drafts.csswg.org/css-text-decor-3/issues-cr-2013#issue-14</a><br/>
