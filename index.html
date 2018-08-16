@@ -83,8 +83,13 @@ function generate (input) {
             }
         // check for actions
         if (inputlines[i].includes('Created ACTION-')) actions.push(inputlines[i].substr(inputlines[i].indexOf(' - ')+3))
+        if (inputlines[i].match(/^Action #\d+:/)) actions.push(inputlines[i].substr(inputlines[i].indexOf(':')+1))// scribejs
+        
+        // check for resolutions
         if (inputlines[i].includes('RESOLVED:</b>')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+13))
         else if (inputlines[i].includes('RESOLVED:')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+9))
+        console.log(inputlines[i])
+        if (inputlines[i].match(/^Resolution #\d+:/)) resolutions.push(inputlines[i].substr(inputlines[i].indexOf(':')+1))// scribejs
         }
     var result = 'This issue was discussed in '
     if (document.getElementById('url').value) result += '[a meeting]('+document.getElementById('url').value+')'
@@ -105,7 +110,7 @@ function generate (input) {
         }
     
     
-    result += '<details><summary>View the transcript</summary>\n'
+    result += '<details><summary><i class="differentiate">View the transcript</i></summary>\n'
     result += out.join('')
     result += '</details>'
     
