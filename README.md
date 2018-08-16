@@ -1,5 +1,11 @@
 # mins2issue
-Simple web based tool to convert parts of W3C minutes output into a form that can be dropped into a github issue.
+Simple web based tool to convert parts of W3C minutes output into a form that can be dropped into a github issue.  No installation needed – this is just a web page.
+
+The output starts by listing actions raised, and resolutions taken. Then an expandable prompt can be opened to reveal the relevant section of the minutes. It's possible to also include a link to the minutes page.
+
+Some groups use a bot to produce similar results. This tool is different in that it works from the published minutes pages – no need to issue commands during the meeting to capture the information. It seems to work ok with minutes pages produced by rrsagent (including v2) and scribejs.
+
+I wrote this tool very quickly, so if you encounter a bug, please suggest a fix (it's very simple code).
 
 ## To use the tool:
 
@@ -12,10 +18,6 @@ Simple web based tool to convert parts of W3C minutes output into a form that ca
 4. Click on `Generate issue comment`.
 
 5. Copy the highlighted result from the right-hand box, and paste it into a comment box in a GitHub issue.
-
-The tool should place near the top a list of actions raised, and any resolutions taken.
-
-Seems to work with minutes pages produced by rrsagent (including v2) and scribejs.
 
 
 ## Example
