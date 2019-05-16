@@ -88,7 +88,9 @@ function generate (input) {
         // check for resolutions
         if (inputlines[i].includes('RESOLVED:</b>')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+13))
         else if (inputlines[i].includes('RESOLVED:')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLVED:')+9))
-        console.log(inputlines[i])
+        if (inputlines[i].includes('RESOLUTION:</b>')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLUTION:')+15))
+        else if (inputlines[i].includes('RESOLUTION:')) resolutions.push(inputlines[i].substr(inputlines[i].indexOf('RESOLUTION:')+11))
+        //console.log(inputlines[i],"resolutions:", resolutions.length)
         if (inputlines[i].match(/^Resolution #\d+:/)) resolutions.push(inputlines[i].substr(inputlines[i].indexOf(':')+1))// scribejs
         }
     var result = 'This issue was discussed in '
