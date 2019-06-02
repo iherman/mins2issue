@@ -72,6 +72,7 @@ function generate (input) {
 	// go through input and concatenate lines so you have one line per entry with fields tab separated
 	for (let i=0; i<inputlines.length; i++) { 
         inputlines[i] = inputlines[i].trim()
+		inputlines[i] = inputlines[i].replace(/(@[^ ]+)/g, '`$1`') 
 		inputlines[i] = inputlines[i].replace(/^<([^>]+)>/g, '<b>&lt;$1&gt;</b>')
 		inputlines[i] = inputlines[i].replace(/^([^: ]+):/g, '<b>$1:</b>')
 		inputlines[i] = inputlines[i].replace(/<b>https:<\/b>/g, 'https:')
